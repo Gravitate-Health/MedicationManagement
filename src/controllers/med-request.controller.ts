@@ -105,7 +105,7 @@ export class MedRequestController {
     },
   })
   async findById(
-    @param.path.number('id') id: number,
+    @param.path.string('id') id: string,
     @param.filter(MedRequest, {exclude: 'where'}) filter?: FilterExcludingWhere<MedRequest>
   ): Promise<MedRequest> {
     return this.medRequestRepository.findById(id, filter);
@@ -116,7 +116,7 @@ export class MedRequestController {
     description: 'MedRequest PATCH success',
   })
   async updateById(
-    @param.path.number('id') id: number,
+    @param.path.string('id') id: string,
     @requestBody({
       content: {
         'application/json': {
@@ -134,7 +134,7 @@ export class MedRequestController {
     description: 'MedRequest PUT success',
   })
   async replaceById(
-    @param.path.number('id') id: number,
+    @param.path.string('id') id: string,
     @requestBody() medRequest: MedRequest,
   ): Promise<void> {
     await this.medRequestRepository.replaceById(id, medRequest);
@@ -144,7 +144,7 @@ export class MedRequestController {
   @response(204, {
     description: 'MedRequest DELETE success',
   })
-  async deleteById(@param.path.number('id') id: number): Promise<void> {
+  async deleteById(@param.path.string('id') id: string): Promise<void> {
     await this.medRequestRepository.deleteById(id);
   }
 }
