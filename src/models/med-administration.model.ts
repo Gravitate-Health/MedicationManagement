@@ -1,19 +1,19 @@
 import {Entity, model, property} from '@loopback/repository';
 
-@model()
+@model({settings: {strict: false}})
 export class MedAdministration extends Entity {
   @property({
     type: 'string',
     id: true,
     generated: true
   })
-  id: string;
+  identifier: string;
 
   @property({
     type: 'string',
     required: true,
   })
-  identifier: string;
+  id: string;
 
   @property({
     type: 'any',
@@ -37,7 +37,6 @@ export class MedAdministration extends Entity {
 
   @property({
     type: 'string',
-    required: true,
   })
   status: string;
 
@@ -126,6 +125,11 @@ export class MedAdministration extends Entity {
   })
   eventHistory?: any;
 
+  // Define well-known properties here
+
+  // Indexer property to allow additional data
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [prop: string]: any;
 
   constructor(data?: Partial<MedAdministration>) {
     super(data);
