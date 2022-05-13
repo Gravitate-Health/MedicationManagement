@@ -5,7 +5,7 @@ export class MedAdministration extends Entity {
   @property({
     type: 'string',
     id: true,
-    generated: true
+    generated: true,
   })
   identifier: string;
 
@@ -37,6 +37,7 @@ export class MedAdministration extends Entity {
 
   @property({
     type: 'string',
+    required: true,
   })
   status: string;
 
@@ -52,11 +53,13 @@ export class MedAdministration extends Entity {
 
   @property({
     type: 'any',
+    required: true,
   })
   medication?: any;
 
   @property({
     type: 'any',
+    required: true,
   })
   subject?: any;
 
@@ -72,6 +75,7 @@ export class MedAdministration extends Entity {
 
   @property({
     type: 'any',
+    required: true,
   })
   occurence?: any;
 

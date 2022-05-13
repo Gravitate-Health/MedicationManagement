@@ -5,7 +5,7 @@ export class MedDispense extends Entity {
   @property({
     type: 'string',
     id: true,
-    generated: true
+    generated: true,
   })
   identifier: string;
 
@@ -26,7 +26,8 @@ export class MedDispense extends Entity {
   partOf?: any;
 
   @property({
-    type: 'string'
+    type: 'string',
+    required: true,
   })
   status: string;
 
@@ -47,11 +48,13 @@ export class MedDispense extends Entity {
 
   @property({
     type: 'any',
+    required: true,
   })
   medication?: any;
 
   @property({
     type: 'any',
+    required: true,
   })
   subject?: any;
 
