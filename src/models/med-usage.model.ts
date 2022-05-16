@@ -7,7 +7,7 @@ export class MedUsage extends Entity {
     id: true,
     generated: true,
   })
-  identifier: string;
+  internalId: string;
 
   @property({
     type: 'string',
@@ -49,7 +49,7 @@ export class MedUsage extends Entity {
   effective?: any;
 
   @property({
-    type: 'date',
+    type: 'string',
   })
   dateAsserted?: string;
 

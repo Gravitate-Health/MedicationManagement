@@ -7,7 +7,7 @@ export class MedAdministration extends Entity {
     id: true,
     generated: true,
   })
-  identifier: string;
+  internalId: string;
 
   @property({
     type: 'string',
@@ -75,12 +75,12 @@ export class MedAdministration extends Entity {
 
   @property({
     type: 'any',
-    required: true,
+    //required: true,
   })
   occurence?: any;
 
   @property({
-    type: 'date',
+    type: 'string',
   })
   recorded?: string;
 

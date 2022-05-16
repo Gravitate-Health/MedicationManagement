@@ -7,7 +7,7 @@ export class MedDispense extends Entity {
     id: true,
     generated: true,
   })
-  identifier: string;
+  internalId: string;
 
   @property({
     type: 'string',
@@ -37,7 +37,7 @@ export class MedDispense extends Entity {
   notPerformedReason?: any;
 
   @property({
-    type: 'date',
+    type: 'string',
   })
   statusChanged?: string;
 
@@ -99,17 +99,17 @@ export class MedDispense extends Entity {
   daysSupply?: any;
 
   @property({
-    type: 'date',
+    type: 'string',
   })
   recorded?: string;
 
   @property({
-    type: 'date',
+    type: 'string',
   })
   whenPrepared?: string;
 
   @property({
-    type: 'date',
+    type: 'string',
   })
   whenHandedOver?: string;
 

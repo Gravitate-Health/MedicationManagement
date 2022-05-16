@@ -7,7 +7,7 @@ export class MedRequest extends Entity {
     id: true,
     generated: true,
   })
-  identifier: string;
+  internalId: string;
 
   @property({
     type: 'string',
@@ -52,7 +52,7 @@ export class MedRequest extends Entity {
   statusReason?: any;
 
   @property({
-    type: 'date',
+    type: 'string',
   })
   statusChanged?: string;
 
@@ -95,7 +95,7 @@ export class MedRequest extends Entity {
   informationSource?: any;
 
   @property({
-    type: 'date',
+    type: 'string',
   })
   authoredOn?: string;
 
