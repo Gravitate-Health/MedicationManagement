@@ -75,7 +75,7 @@ export class MedAdministration extends Entity {
 
   @property({
     type: 'any',
-    //required: true,
+    required: true,
   })
   occurence?: any;
 
