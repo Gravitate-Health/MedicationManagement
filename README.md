@@ -61,12 +61,12 @@ npm ci
 
 Usage
 -----
-###Step 1: Run the application
+### Step 1: Run the application
 Inside the directory, run the following command:
 ```bash
 npm start
 ```
-###Step 2: Access through the browser
+### Step 2: Access through the browser
 Open http://127.0.0.1:3000 in your browser, preferably Google Chrome, in private or incognito mode.
 
 ###Step 3:  Different endpoints
@@ -77,7 +77,7 @@ For every endpoint, change 'PATH' with the following:
 - med-administrations
 - med-usages
 
-POST request, adds a new object to the G-Lens DB: 
+POST request, adds a new object to the G-Lens DB:
 
     https://gravitate-health.lst.tfo.upm.es/med-management/PATH
 
@@ -85,27 +85,27 @@ GET request, returns the count of the objects stored in the DB:
 
     https://gravitate-health.lst.tfo.upm.es/med-management/PATH/count
 
-GET request, returns the list of the objects stored in the DB: 
+GET request, returns the list of the objects stored in the DB:
 
     https://gravitate-health.lst.tfo.upm.es/med-management/PATH
 
-PATCH request, updates the object that matches the body of the request: 
+PATCH request, updates the object that matches the body of the request:
 
     https://gravitate-health.lst.tfo.upm.es/med-management/PATH
 
-GET request, returns a single object with ID <id>: 
+GET request, returns a single object with ID <id>:
 
     https://gravitate-health.lst.tfo.upm.es/med-management/PATH/<id>
 
-PATCH request, updates the object with ID <id>: 
+PATCH request, updates the object with ID <id>:
 
     https://gravitate-health.lst.tfo.upm.es/med-management/PATH/<id>
 
-PUT request, replaces the object with ID <id>: 
+PUT request, replaces the object with ID <id>:
 
     https://gravitate-health.lst.tfo.upm.es/med-management/PATH/<id>
 
-DEL request, deletes the object with ID <id>: 
+DEL request, deletes the object with ID <id>:
 
     https://gravitate-health.lst.tfo.upm.es/med-management/PATH/<id>
 
