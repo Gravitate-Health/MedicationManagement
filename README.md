@@ -69,7 +69,7 @@ npm start
 ### Step 2: Access through the browser
 Open http://127.0.0.1:3000 in your browser, preferably Google Chrome, in private or incognito mode.
 
-###Step 3:  Different endpoints
+### Step 3:  Different endpoints
 
 For every endpoint, change 'PATH' with the following:
 - med-requests
