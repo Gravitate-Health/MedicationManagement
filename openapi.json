@@ -1,0 +1,3143 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "med-management",
+    "version": "0.0.1",
+    "description": "Module for medication management",
+    "contact": {
+      "name": "oansotegui",
+      "email": "oscaransotegui@gmail.com"
+    }
+  },
+  "paths": {
+    "/med-administrations/count": {
+      "get": {
+        "x-controller-name": "MedAdministrationController",
+        "x-operation-name": "count",
+        "tags": [
+          "MedAdministrationController"
+        ],
+        "responses": {
+          "200": {
+            "description": "MedAdministration model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "MedAdministration.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<MedAdministration>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "MedAdministrationController.count"
+      }
+    },
+    "/med-administrations/{id}": {
+      "put": {
+        "x-controller-name": "MedAdministrationController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "MedAdministrationController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "MedAdministration PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MedAdministration"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "MedAdministrationController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "MedAdministrationController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "MedAdministrationController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "MedAdministration PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MedAdministrationPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "MedAdministrationController.updateById"
+      },
+      "get": {
+        "x-controller-name": "MedAdministrationController",
+        "x-operation-name": "findById",
+        "tags": [
+          "MedAdministrationController"
+        ],
+        "responses": {
+          "200": {
+            "description": "MedAdministration model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MedAdministrationWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MedAdministration.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "MedAdministrationController.findById"
+      },
+      "delete": {
+        "x-controller-name": "MedAdministrationController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "MedAdministrationController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "MedAdministration DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "MedAdministrationController.deleteById"
+      }
+    },
+    "/med-administrations": {
+      "post": {
+        "x-controller-name": "MedAdministrationController",
+        "x-operation-name": "create",
+        "tags": [
+          "MedAdministrationController"
+        ],
+        "responses": {
+          "200": {
+            "description": "MedAdministration model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MedAdministration"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewMedAdministration"
+              }
+            }
+          }
+        },
+        "operationId": "MedAdministrationController.create"
+      },
+      "patch": {
+        "x-controller-name": "MedAdministrationController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "MedAdministrationController"
+        ],
+        "responses": {
+          "200": {
+            "description": "MedAdministration PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "MedAdministration.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<MedAdministration>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MedAdministrationPartial"
+              }
+            }
+          }
+        },
+        "operationId": "MedAdministrationController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "MedAdministrationController",
+        "x-operation-name": "find",
+        "tags": [
+          "MedAdministrationController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of MedAdministration model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MedAdministrationWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MedAdministration.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "MedAdministrationController.find"
+      }
+    },
+    "/med-dispenses/count": {
+      "get": {
+        "x-controller-name": "MedDispenseController",
+        "x-operation-name": "count",
+        "tags": [
+          "MedDispenseController"
+        ],
+        "responses": {
+          "200": {
+            "description": "MedDispense model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "MedDispense.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<MedDispense>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "MedDispenseController.count"
+      }
+    },
+    "/med-dispenses/{id}": {
+      "put": {
+        "x-controller-name": "MedDispenseController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "MedDispenseController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "MedDispense PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MedDispense"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "MedDispenseController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "MedDispenseController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "MedDispenseController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "MedDispense PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MedDispensePartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "MedDispenseController.updateById"
+      },
+      "get": {
+        "x-controller-name": "MedDispenseController",
+        "x-operation-name": "findById",
+        "tags": [
+          "MedDispenseController"
+        ],
+        "responses": {
+          "200": {
+            "description": "MedDispense model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MedDispenseWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MedDispense.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "MedDispenseController.findById"
+      },
+      "delete": {
+        "x-controller-name": "MedDispenseController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "MedDispenseController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "MedDispense DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "MedDispenseController.deleteById"
+      }
+    },
+    "/med-dispenses": {
+      "post": {
+        "x-controller-name": "MedDispenseController",
+        "x-operation-name": "create",
+        "tags": [
+          "MedDispenseController"
+        ],
+        "responses": {
+          "200": {
+            "description": "MedDispense model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MedDispense"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewMedDispense"
+              }
+            }
+          }
+        },
+        "operationId": "MedDispenseController.create"
+      },
+      "patch": {
+        "x-controller-name": "MedDispenseController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "MedDispenseController"
+        ],
+        "responses": {
+          "200": {
+            "description": "MedDispense PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "MedDispense.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<MedDispense>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MedDispensePartial"
+              }
+            }
+          }
+        },
+        "operationId": "MedDispenseController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "MedDispenseController",
+        "x-operation-name": "find",
+        "tags": [
+          "MedDispenseController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of MedDispense model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MedDispenseWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MedDispense.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "MedDispenseController.find"
+      }
+    },
+    "/med-requests/count": {
+      "get": {
+        "x-controller-name": "MedRequestController",
+        "x-operation-name": "count",
+        "tags": [
+          "MedRequestController"
+        ],
+        "responses": {
+          "200": {
+            "description": "MedRequest model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "MedRequest.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<MedRequest>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "MedRequestController.count"
+      }
+    },
+    "/med-requests/{id}": {
+      "put": {
+        "x-controller-name": "MedRequestController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "MedRequestController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "MedRequest PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MedRequest"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "MedRequestController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "MedRequestController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "MedRequestController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "MedRequest PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MedRequestPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "MedRequestController.updateById"
+      },
+      "get": {
+        "x-controller-name": "MedRequestController",
+        "x-operation-name": "findById",
+        "tags": [
+          "MedRequestController"
+        ],
+        "responses": {
+          "200": {
+            "description": "MedRequest model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MedRequestWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MedRequest.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "MedRequestController.findById"
+      },
+      "delete": {
+        "x-controller-name": "MedRequestController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "MedRequestController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "MedRequest DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "MedRequestController.deleteById"
+      }
+    },
+    "/med-requests": {
+      "post": {
+        "x-controller-name": "MedRequestController",
+        "x-operation-name": "create",
+        "tags": [
+          "MedRequestController"
+        ],
+        "responses": {
+          "200": {
+            "description": "MedRequest model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MedRequest"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewMedRequest"
+              }
+            }
+          }
+        },
+        "operationId": "MedRequestController.create"
+      },
+      "patch": {
+        "x-controller-name": "MedRequestController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "MedRequestController"
+        ],
+        "responses": {
+          "200": {
+            "description": "MedRequest PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "MedRequest.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<MedRequest>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MedRequestPartial"
+              }
+            }
+          }
+        },
+        "operationId": "MedRequestController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "MedRequestController",
+        "x-operation-name": "find",
+        "tags": [
+          "MedRequestController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of MedRequest model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MedRequestWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MedRequest.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "MedRequestController.find"
+      }
+    },
+    "/med-usages/count": {
+      "get": {
+        "x-controller-name": "MedUsageController",
+        "x-operation-name": "count",
+        "tags": [
+          "MedUsageController"
+        ],
+        "responses": {
+          "200": {
+            "description": "MedUsage model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "MedUsage.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<MedUsage>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "MedUsageController.count"
+      }
+    },
+    "/med-usages/{id}": {
+      "put": {
+        "x-controller-name": "MedUsageController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "MedUsageController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "MedUsage PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MedUsage"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "MedUsageController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "MedUsageController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "MedUsageController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "MedUsage PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MedUsagePartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "MedUsageController.updateById"
+      },
+      "get": {
+        "x-controller-name": "MedUsageController",
+        "x-operation-name": "findById",
+        "tags": [
+          "MedUsageController"
+        ],
+        "responses": {
+          "200": {
+            "description": "MedUsage model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MedUsageWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MedUsage.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "MedUsageController.findById"
+      },
+      "delete": {
+        "x-controller-name": "MedUsageController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "MedUsageController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "MedUsage DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "MedUsageController.deleteById"
+      }
+    },
+    "/med-usages": {
+      "post": {
+        "x-controller-name": "MedUsageController",
+        "x-operation-name": "create",
+        "tags": [
+          "MedUsageController"
+        ],
+        "responses": {
+          "200": {
+            "description": "MedUsage model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MedUsage"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewMedUsage"
+              }
+            }
+          }
+        },
+        "operationId": "MedUsageController.create"
+      },
+      "patch": {
+        "x-controller-name": "MedUsageController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "MedUsageController"
+        ],
+        "responses": {
+          "200": {
+            "description": "MedUsage PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "MedUsage.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<MedUsage>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MedUsagePartial"
+              }
+            }
+          }
+        },
+        "operationId": "MedUsageController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "MedUsageController",
+        "x-operation-name": "find",
+        "tags": [
+          "MedUsageController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of MedUsage model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MedUsageWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MedUsage.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "MedUsageController.find"
+      }
+    },
+    "/ping": {
+      "get": {
+        "x-controller-name": "PingController",
+        "x-operation-name": "ping",
+        "tags": [
+          "PingController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Ping Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PingResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "PingController.ping"
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:3000"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "MedAdministration": {
+        "title": "MedAdministration",
+        "type": "object",
+        "properties": {
+          "internalId": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "instantiatesCanonical": {},
+          "instantiatesUri": {
+            "type": "string"
+          },
+          "basedOn": {},
+          "partOf": {},
+          "status": {
+            "type": "string"
+          },
+          "statusReason": {},
+          "category": {},
+          "medication": {},
+          "subject": {},
+          "encounter": {},
+          "supportingInformation": {},
+          "occurence": {},
+          "recorded": {
+            "type": "string"
+          },
+          "isSubPotent": {
+            "type": "boolean"
+          },
+          "subPotentReason": {},
+          "performer": {},
+          "reason": {},
+          "request": {},
+          "device": {},
+          "note": {},
+          "dosage": {},
+          "eventHistory": {}
+        },
+        "required": [
+          "id",
+          "status",
+          "medication",
+          "subject",
+          "occurence"
+        ],
+        "additionalProperties": true
+      },
+      "NewMedAdministration": {
+        "title": "NewMedAdministration",
+        "type": "object",
+        "description": "(tsType: Omit<MedAdministration, 'internalId'>, schemaOptions: { title: 'NewMedAdministration', exclude: [ 'internalId' ] })",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "instantiatesCanonical": {},
+          "instantiatesUri": {
+            "type": "string"
+          },
+          "basedOn": {},
+          "partOf": {},
+          "status": {
+            "type": "string"
+          },
+          "statusReason": {},
+          "category": {},
+          "medication": {},
+          "subject": {},
+          "encounter": {},
+          "supportingInformation": {},
+          "occurence": {},
+          "recorded": {
+            "type": "string"
+          },
+          "isSubPotent": {
+            "type": "boolean"
+          },
+          "subPotentReason": {},
+          "performer": {},
+          "reason": {},
+          "request": {},
+          "device": {},
+          "note": {},
+          "dosage": {},
+          "eventHistory": {}
+        },
+        "required": [
+          "id",
+          "status",
+          "medication",
+          "subject",
+          "occurence"
+        ],
+        "additionalProperties": true,
+        "x-typescript-type": "Omit<MedAdministration, 'internalId'>"
+      },
+      "MedAdministrationWithRelations": {
+        "title": "MedAdministrationWithRelations",
+        "type": "object",
+        "description": "(tsType: MedAdministrationWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "internalId": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "instantiatesCanonical": {},
+          "instantiatesUri": {
+            "type": "string"
+          },
+          "basedOn": {},
+          "partOf": {},
+          "status": {
+            "type": "string"
+          },
+          "statusReason": {},
+          "category": {},
+          "medication": {},
+          "subject": {},
+          "encounter": {},
+          "supportingInformation": {},
+          "occurence": {},
+          "recorded": {
+            "type": "string"
+          },
+          "isSubPotent": {
+            "type": "boolean"
+          },
+          "subPotentReason": {},
+          "performer": {},
+          "reason": {},
+          "request": {},
+          "device": {},
+          "note": {},
+          "dosage": {},
+          "eventHistory": {}
+        },
+        "required": [
+          "id",
+          "status",
+          "medication",
+          "subject",
+          "occurence"
+        ],
+        "additionalProperties": true,
+        "x-typescript-type": "MedAdministrationWithRelations"
+      },
+      "MedAdministrationPartial": {
+        "title": "MedAdministrationPartial",
+        "type": "object",
+        "description": "(tsType: Partial<MedAdministration>, schemaOptions: { partial: true })",
+        "properties": {
+          "internalId": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "instantiatesCanonical": {},
+          "instantiatesUri": {
+            "type": "string"
+          },
+          "basedOn": {},
+          "partOf": {},
+          "status": {
+            "type": "string"
+          },
+          "statusReason": {},
+          "category": {},
+          "medication": {},
+          "subject": {},
+          "encounter": {},
+          "supportingInformation": {},
+          "occurence": {},
+          "recorded": {
+            "type": "string"
+          },
+          "isSubPotent": {
+            "type": "boolean"
+          },
+          "subPotentReason": {},
+          "performer": {},
+          "reason": {},
+          "request": {},
+          "device": {},
+          "note": {},
+          "dosage": {},
+          "eventHistory": {}
+        },
+        "additionalProperties": true,
+        "x-typescript-type": "Partial<MedAdministration>"
+      },
+      "MedDispense": {
+        "title": "MedDispense",
+        "type": "object",
+        "properties": {
+          "internalId": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "basedOn": {},
+          "partOf": {},
+          "status": {
+            "type": "string"
+          },
+          "notPerformedReason": {},
+          "statusChanged": {
+            "type": "string"
+          },
+          "category": {},
+          "medication": {},
+          "subject": {},
+          "encounter": {},
+          "supportingInformation": {},
+          "performer": {},
+          "location": {},
+          "authorizingPrescription": {},
+          "type": {},
+          "quantity": {},
+          "daysSupply": {},
+          "recorded": {
+            "type": "string"
+          },
+          "whenPrepared": {
+            "type": "string"
+          },
+          "whenHandedOver": {
+            "type": "string"
+          },
+          "destination": {},
+          "receiver": {},
+          "note": {},
+          "renderedDosageInstruction": {
+            "type": "string"
+          },
+          "dosageInstruction": {},
+          "substitution": {},
+          "eventHistory": {}
+        },
+        "required": [
+          "id",
+          "status",
+          "medication",
+          "subject"
+        ],
+        "additionalProperties": true
+      },
+      "NewMedDispense": {
+        "title": "NewMedDispense",
+        "type": "object",
+        "description": "(tsType: Omit<MedDispense, 'internalId'>, schemaOptions: { title: 'NewMedDispense', exclude: [ 'internalId' ] })",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "basedOn": {},
+          "partOf": {},
+          "status": {
+            "type": "string"
+          },
+          "notPerformedReason": {},
+          "statusChanged": {
+            "type": "string"
+          },
+          "category": {},
+          "medication": {},
+          "subject": {},
+          "encounter": {},
+          "supportingInformation": {},
+          "performer": {},
+          "location": {},
+          "authorizingPrescription": {},
+          "type": {},
+          "quantity": {},
+          "daysSupply": {},
+          "recorded": {
+            "type": "string"
+          },
+          "whenPrepared": {
+            "type": "string"
+          },
+          "whenHandedOver": {
+            "type": "string"
+          },
+          "destination": {},
+          "receiver": {},
+          "note": {},
+          "renderedDosageInstruction": {
+            "type": "string"
+          },
+          "dosageInstruction": {},
+          "substitution": {},
+          "eventHistory": {}
+        },
+        "required": [
+          "id",
+          "status",
+          "medication",
+          "subject"
+        ],
+        "additionalProperties": true,
+        "x-typescript-type": "Omit<MedDispense, 'internalId'>"
+      },
+      "MedDispenseWithRelations": {
+        "title": "MedDispenseWithRelations",
+        "type": "object",
+        "description": "(tsType: MedDispenseWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "internalId": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "basedOn": {},
+          "partOf": {},
+          "status": {
+            "type": "string"
+          },
+          "notPerformedReason": {},
+          "statusChanged": {
+            "type": "string"
+          },
+          "category": {},
+          "medication": {},
+          "subject": {},
+          "encounter": {},
+          "supportingInformation": {},
+          "performer": {},
+          "location": {},
+          "authorizingPrescription": {},
+          "type": {},
+          "quantity": {},
+          "daysSupply": {},
+          "recorded": {
+            "type": "string"
+          },
+          "whenPrepared": {
+            "type": "string"
+          },
+          "whenHandedOver": {
+            "type": "string"
+          },
+          "destination": {},
+          "receiver": {},
+          "note": {},
+          "renderedDosageInstruction": {
+            "type": "string"
+          },
+          "dosageInstruction": {},
+          "substitution": {},
+          "eventHistory": {}
+        },
+        "required": [
+          "id",
+          "status",
+          "medication",
+          "subject"
+        ],
+        "additionalProperties": true,
+        "x-typescript-type": "MedDispenseWithRelations"
+      },
+      "MedDispensePartial": {
+        "title": "MedDispensePartial",
+        "type": "object",
+        "description": "(tsType: Partial<MedDispense>, schemaOptions: { partial: true })",
+        "properties": {
+          "internalId": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "basedOn": {},
+          "partOf": {},
+          "status": {
+            "type": "string"
+          },
+          "notPerformedReason": {},
+          "statusChanged": {
+            "type": "string"
+          },
+          "category": {},
+          "medication": {},
+          "subject": {},
+          "encounter": {},
+          "supportingInformation": {},
+          "performer": {},
+          "location": {},
+          "authorizingPrescription": {},
+          "type": {},
+          "quantity": {},
+          "daysSupply": {},
+          "recorded": {
+            "type": "string"
+          },
+          "whenPrepared": {
+            "type": "string"
+          },
+          "whenHandedOver": {
+            "type": "string"
+          },
+          "destination": {},
+          "receiver": {},
+          "note": {},
+          "renderedDosageInstruction": {
+            "type": "string"
+          },
+          "dosageInstruction": {},
+          "substitution": {},
+          "eventHistory": {}
+        },
+        "additionalProperties": true,
+        "x-typescript-type": "Partial<MedDispense>"
+      },
+      "MedRequest": {
+        "title": "MedRequest",
+        "type": "object",
+        "properties": {
+          "internalId": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "instantiatesCanonical": {},
+          "instantiatesUri": {},
+          "basedOn": {},
+          "priorPrescription": {},
+          "groupIdentifier": {},
+          "status": {
+            "type": "string"
+          },
+          "statusReason": {},
+          "statusChanged": {
+            "type": "string"
+          },
+          "intent": {},
+          "category": {},
+          "priority": {
+            "type": "string"
+          },
+          "doNotPerform": {
+            "type": "boolean"
+          },
+          "medication": {},
+          "subject": {},
+          "informationSource": {},
+          "authoredOn": {
+            "type": "string"
+          },
+          "requester": {},
+          "reported": {
+            "type": "boolean"
+          },
+          "performerType": {},
+          "performer": {},
+          "recorder": {},
+          "reason": {},
+          "courseOfTherapyType": {},
+          "insurance": {},
+          "note": {},
+          "dose": {},
+          "dispenseRequest": {},
+          "substitution": {},
+          "eventHistory": {}
+        },
+        "required": [
+          "id",
+          "status",
+          "intent",
+          "medication",
+          "subject"
+        ],
+        "additionalProperties": true
+      },
+      "NewMedRequest": {
+        "title": "NewMedRequest",
+        "type": "object",
+        "description": "(tsType: Omit<MedRequest, 'internalId'>, schemaOptions: { title: 'NewMedRequest', exclude: [ 'internalId' ] })",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "instantiatesCanonical": {},
+          "instantiatesUri": {},
+          "basedOn": {},
+          "priorPrescription": {},
+          "groupIdentifier": {},
+          "status": {
+            "type": "string"
+          },
+          "statusReason": {},
+          "statusChanged": {
+            "type": "string"
+          },
+          "intent": {},
+          "category": {},
+          "priority": {
+            "type": "string"
+          },
+          "doNotPerform": {
+            "type": "boolean"
+          },
+          "medication": {},
+          "subject": {},
+          "informationSource": {},
+          "authoredOn": {
+            "type": "string"
+          },
+          "requester": {},
+          "reported": {
+            "type": "boolean"
+          },
+          "performerType": {},
+          "performer": {},
+          "recorder": {},
+          "reason": {},
+          "courseOfTherapyType": {},
+          "insurance": {},
+          "note": {},
+          "dose": {},
+          "dispenseRequest": {},
+          "substitution": {},
+          "eventHistory": {}
+        },
+        "required": [
+          "id",
+          "status",
+          "intent",
+          "medication",
+          "subject"
+        ],
+        "additionalProperties": true,
+        "x-typescript-type": "Omit<MedRequest, 'internalId'>"
+      },
+      "MedRequestWithRelations": {
+        "title": "MedRequestWithRelations",
+        "type": "object",
+        "description": "(tsType: MedRequestWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "internalId": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "instantiatesCanonical": {},
+          "instantiatesUri": {},
+          "basedOn": {},
+          "priorPrescription": {},
+          "groupIdentifier": {},
+          "status": {
+            "type": "string"
+          },
+          "statusReason": {},
+          "statusChanged": {
+            "type": "string"
+          },
+          "intent": {},
+          "category": {},
+          "priority": {
+            "type": "string"
+          },
+          "doNotPerform": {
+            "type": "boolean"
+          },
+          "medication": {},
+          "subject": {},
+          "informationSource": {},
+          "authoredOn": {
+            "type": "string"
+          },
+          "requester": {},
+          "reported": {
+            "type": "boolean"
+          },
+          "performerType": {},
+          "performer": {},
+          "recorder": {},
+          "reason": {},
+          "courseOfTherapyType": {},
+          "insurance": {},
+          "note": {},
+          "dose": {},
+          "dispenseRequest": {},
+          "substitution": {},
+          "eventHistory": {}
+        },
+        "required": [
+          "id",
+          "status",
+          "intent",
+          "medication",
+          "subject"
+        ],
+        "additionalProperties": true,
+        "x-typescript-type": "MedRequestWithRelations"
+      },
+      "MedRequestPartial": {
+        "title": "MedRequestPartial",
+        "type": "object",
+        "description": "(tsType: Partial<MedRequest>, schemaOptions: { partial: true })",
+        "properties": {
+          "internalId": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "instantiatesCanonical": {},
+          "instantiatesUri": {},
+          "basedOn": {},
+          "priorPrescription": {},
+          "groupIdentifier": {},
+          "status": {
+            "type": "string"
+          },
+          "statusReason": {},
+          "statusChanged": {
+            "type": "string"
+          },
+          "intent": {},
+          "category": {},
+          "priority": {
+            "type": "string"
+          },
+          "doNotPerform": {
+            "type": "boolean"
+          },
+          "medication": {},
+          "subject": {},
+          "informationSource": {},
+          "authoredOn": {
+            "type": "string"
+          },
+          "requester": {},
+          "reported": {
+            "type": "boolean"
+          },
+          "performerType": {},
+          "performer": {},
+          "recorder": {},
+          "reason": {},
+          "courseOfTherapyType": {},
+          "insurance": {},
+          "note": {},
+          "dose": {},
+          "dispenseRequest": {},
+          "substitution": {},
+          "eventHistory": {}
+        },
+        "additionalProperties": true,
+        "x-typescript-type": "Partial<MedRequest>"
+      },
+      "MedUsage": {
+        "title": "MedUsage",
+        "type": "object",
+        "properties": {
+          "internalId": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "category": {},
+          "medication": {},
+          "subject": {},
+          "encounter": {},
+          "effective": {},
+          "dateAsserted": {
+            "type": "string"
+          },
+          "informationSource": {},
+          "derivedFrom": {},
+          "reason": {},
+          "note": {},
+          "renderedDosageInstruction": {
+            "type": "string"
+          },
+          "dosage": {},
+          "adherence": {}
+        },
+        "required": [
+          "id",
+          "status",
+          "medication",
+          "subject"
+        ],
+        "additionalProperties": true
+      },
+      "NewMedUsage": {
+        "title": "NewMedUsage",
+        "type": "object",
+        "description": "(tsType: Omit<MedUsage, 'internalId'>, schemaOptions: { title: 'NewMedUsage', exclude: [ 'internalId' ] })",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "category": {},
+          "medication": {},
+          "subject": {},
+          "encounter": {},
+          "effective": {},
+          "dateAsserted": {
+            "type": "string"
+          },
+          "informationSource": {},
+          "derivedFrom": {},
+          "reason": {},
+          "note": {},
+          "renderedDosageInstruction": {
+            "type": "string"
+          },
+          "dosage": {},
+          "adherence": {}
+        },
+        "required": [
+          "id",
+          "status",
+          "medication",
+          "subject"
+        ],
+        "additionalProperties": true,
+        "x-typescript-type": "Omit<MedUsage, 'internalId'>"
+      },
+      "MedUsageWithRelations": {
+        "title": "MedUsageWithRelations",
+        "type": "object",
+        "description": "(tsType: MedUsageWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "internalId": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "category": {},
+          "medication": {},
+          "subject": {},
+          "encounter": {},
+          "effective": {},
+          "dateAsserted": {
+            "type": "string"
+          },
+          "informationSource": {},
+          "derivedFrom": {},
+          "reason": {},
+          "note": {},
+          "renderedDosageInstruction": {
+            "type": "string"
+          },
+          "dosage": {},
+          "adherence": {}
+        },
+        "required": [
+          "id",
+          "status",
+          "medication",
+          "subject"
+        ],
+        "additionalProperties": true,
+        "x-typescript-type": "MedUsageWithRelations"
+      },
+      "MedUsagePartial": {
+        "title": "MedUsagePartial",
+        "type": "object",
+        "description": "(tsType: Partial<MedUsage>, schemaOptions: { partial: true })",
+        "properties": {
+          "internalId": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "category": {},
+          "medication": {},
+          "subject": {},
+          "encounter": {},
+          "effective": {},
+          "dateAsserted": {
+            "type": "string"
+          },
+          "informationSource": {},
+          "derivedFrom": {},
+          "reason": {},
+          "note": {},
+          "renderedDosageInstruction": {
+            "type": "string"
+          },
+          "dosage": {},
+          "adherence": {}
+        },
+        "additionalProperties": true,
+        "x-typescript-type": "Partial<MedUsage>"
+      },
+      "loopback.Count": {
+        "type": "object",
+        "title": "loopback.Count",
+        "x-typescript-type": "@loopback/repository#Count",
+        "properties": {
+          "count": {
+            "type": "number"
+          }
+        }
+      },
+      "MedAdministration.Filter": {
+        "type": "object",
+        "title": "MedAdministration.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "internalId": {
+                    "type": "boolean"
+                  },
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "instantiatesCanonical": {
+                    "type": "boolean"
+                  },
+                  "instantiatesUri": {
+                    "type": "boolean"
+                  },
+                  "basedOn": {
+                    "type": "boolean"
+                  },
+                  "partOf": {
+                    "type": "boolean"
+                  },
+                  "status": {
+                    "type": "boolean"
+                  },
+                  "statusReason": {
+                    "type": "boolean"
+                  },
+                  "category": {
+                    "type": "boolean"
+                  },
+                  "medication": {
+                    "type": "boolean"
+                  },
+                  "subject": {
+                    "type": "boolean"
+                  },
+                  "encounter": {
+                    "type": "boolean"
+                  },
+                  "supportingInformation": {
+                    "type": "boolean"
+                  },
+                  "occurence": {
+                    "type": "boolean"
+                  },
+                  "recorded": {
+                    "type": "boolean"
+                  },
+                  "isSubPotent": {
+                    "type": "boolean"
+                  },
+                  "subPotentReason": {
+                    "type": "boolean"
+                  },
+                  "performer": {
+                    "type": "boolean"
+                  },
+                  "reason": {
+                    "type": "boolean"
+                  },
+                  "request": {
+                    "type": "boolean"
+                  },
+                  "device": {
+                    "type": "boolean"
+                  },
+                  "note": {
+                    "type": "boolean"
+                  },
+                  "dosage": {
+                    "type": "boolean"
+                  },
+                  "eventHistory": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "example": "internalId"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "MedAdministration.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<MedAdministration>"
+      },
+      "MedAdministration.Filter1": {
+        "type": "object",
+        "title": "MedAdministration.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "MedAdministration.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "internalId": {
+                    "type": "boolean"
+                  },
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "instantiatesCanonical": {
+                    "type": "boolean"
+                  },
+                  "instantiatesUri": {
+                    "type": "boolean"
+                  },
+                  "basedOn": {
+                    "type": "boolean"
+                  },
+                  "partOf": {
+                    "type": "boolean"
+                  },
+                  "status": {
+                    "type": "boolean"
+                  },
+                  "statusReason": {
+                    "type": "boolean"
+                  },
+                  "category": {
+                    "type": "boolean"
+                  },
+                  "medication": {
+                    "type": "boolean"
+                  },
+                  "subject": {
+                    "type": "boolean"
+                  },
+                  "encounter": {
+                    "type": "boolean"
+                  },
+                  "supportingInformation": {
+                    "type": "boolean"
+                  },
+                  "occurence": {
+                    "type": "boolean"
+                  },
+                  "recorded": {
+                    "type": "boolean"
+                  },
+                  "isSubPotent": {
+                    "type": "boolean"
+                  },
+                  "subPotentReason": {
+                    "type": "boolean"
+                  },
+                  "performer": {
+                    "type": "boolean"
+                  },
+                  "reason": {
+                    "type": "boolean"
+                  },
+                  "request": {
+                    "type": "boolean"
+                  },
+                  "device": {
+                    "type": "boolean"
+                  },
+                  "note": {
+                    "type": "boolean"
+                  },
+                  "dosage": {
+                    "type": "boolean"
+                  },
+                  "eventHistory": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "example": "internalId"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "MedAdministration.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<MedAdministration>"
+      },
+      "MedDispense.Filter": {
+        "type": "object",
+        "title": "MedDispense.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "internalId": {
+                    "type": "boolean"
+                  },
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "basedOn": {
+                    "type": "boolean"
+                  },
+                  "partOf": {
+                    "type": "boolean"
+                  },
+                  "status": {
+                    "type": "boolean"
+                  },
+                  "notPerformedReason": {
+                    "type": "boolean"
+                  },
+                  "statusChanged": {
+                    "type": "boolean"
+                  },
+                  "category": {
+                    "type": "boolean"
+                  },
+                  "medication": {
+                    "type": "boolean"
+                  },
+                  "subject": {
+                    "type": "boolean"
+                  },
+                  "encounter": {
+                    "type": "boolean"
+                  },
+                  "supportingInformation": {
+                    "type": "boolean"
+                  },
+                  "performer": {
+                    "type": "boolean"
+                  },
+                  "location": {
+                    "type": "boolean"
+                  },
+                  "authorizingPrescription": {
+                    "type": "boolean"
+                  },
+                  "type": {
+                    "type": "boolean"
+                  },
+                  "quantity": {
+                    "type": "boolean"
+                  },
+                  "daysSupply": {
+                    "type": "boolean"
+                  },
+                  "recorded": {
+                    "type": "boolean"
+                  },
+                  "whenPrepared": {
+                    "type": "boolean"
+                  },
+                  "whenHandedOver": {
+                    "type": "boolean"
+                  },
+                  "destination": {
+                    "type": "boolean"
+                  },
+                  "receiver": {
+                    "type": "boolean"
+                  },
+                  "note": {
+                    "type": "boolean"
+                  },
+                  "renderedDosageInstruction": {
+                    "type": "boolean"
+                  },
+                  "dosageInstruction": {
+                    "type": "boolean"
+                  },
+                  "substitution": {
+                    "type": "boolean"
+                  },
+                  "eventHistory": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "example": "internalId"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "MedDispense.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<MedDispense>"
+      },
+      "MedDispense.Filter1": {
+        "type": "object",
+        "title": "MedDispense.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "MedDispense.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "internalId": {
+                    "type": "boolean"
+                  },
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "basedOn": {
+                    "type": "boolean"
+                  },
+                  "partOf": {
+                    "type": "boolean"
+                  },
+                  "status": {
+                    "type": "boolean"
+                  },
+                  "notPerformedReason": {
+                    "type": "boolean"
+                  },
+                  "statusChanged": {
+                    "type": "boolean"
+                  },
+                  "category": {
+                    "type": "boolean"
+                  },
+                  "medication": {
+                    "type": "boolean"
+                  },
+                  "subject": {
+                    "type": "boolean"
+                  },
+                  "encounter": {
+                    "type": "boolean"
+                  },
+                  "supportingInformation": {
+                    "type": "boolean"
+                  },
+                  "performer": {
+                    "type": "boolean"
+                  },
+                  "location": {
+                    "type": "boolean"
+                  },
+                  "authorizingPrescription": {
+                    "type": "boolean"
+                  },
+                  "type": {
+                    "type": "boolean"
+                  },
+                  "quantity": {
+                    "type": "boolean"
+                  },
+                  "daysSupply": {
+                    "type": "boolean"
+                  },
+                  "recorded": {
+                    "type": "boolean"
+                  },
+                  "whenPrepared": {
+                    "type": "boolean"
+                  },
+                  "whenHandedOver": {
+                    "type": "boolean"
+                  },
+                  "destination": {
+                    "type": "boolean"
+                  },
+                  "receiver": {
+                    "type": "boolean"
+                  },
+                  "note": {
+                    "type": "boolean"
+                  },
+                  "renderedDosageInstruction": {
+                    "type": "boolean"
+                  },
+                  "dosageInstruction": {
+                    "type": "boolean"
+                  },
+                  "substitution": {
+                    "type": "boolean"
+                  },
+                  "eventHistory": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "example": "internalId"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "MedDispense.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<MedDispense>"
+      },
+      "MedRequest.Filter": {
+        "type": "object",
+        "title": "MedRequest.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "internalId": {
+                    "type": "boolean"
+                  },
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "instantiatesCanonical": {
+                    "type": "boolean"
+                  },
+                  "instantiatesUri": {
+                    "type": "boolean"
+                  },
+                  "basedOn": {
+                    "type": "boolean"
+                  },
+                  "priorPrescription": {
+                    "type": "boolean"
+                  },
+                  "groupIdentifier": {
+                    "type": "boolean"
+                  },
+                  "status": {
+                    "type": "boolean"
+                  },
+                  "statusReason": {
+                    "type": "boolean"
+                  },
+                  "statusChanged": {
+                    "type": "boolean"
+                  },
+                  "intent": {
+                    "type": "boolean"
+                  },
+                  "category": {
+                    "type": "boolean"
+                  },
+                  "priority": {
+                    "type": "boolean"
+                  },
+                  "doNotPerform": {
+                    "type": "boolean"
+                  },
+                  "medication": {
+                    "type": "boolean"
+                  },
+                  "subject": {
+                    "type": "boolean"
+                  },
+                  "informationSource": {
+                    "type": "boolean"
+                  },
+                  "authoredOn": {
+                    "type": "boolean"
+                  },
+                  "requester": {
+                    "type": "boolean"
+                  },
+                  "reported": {
+                    "type": "boolean"
+                  },
+                  "performerType": {
+                    "type": "boolean"
+                  },
+                  "performer": {
+                    "type": "boolean"
+                  },
+                  "recorder": {
+                    "type": "boolean"
+                  },
+                  "reason": {
+                    "type": "boolean"
+                  },
+                  "courseOfTherapyType": {
+                    "type": "boolean"
+                  },
+                  "insurance": {
+                    "type": "boolean"
+                  },
+                  "note": {
+                    "type": "boolean"
+                  },
+                  "dose": {
+                    "type": "boolean"
+                  },
+                  "dispenseRequest": {
+                    "type": "boolean"
+                  },
+                  "substitution": {
+                    "type": "boolean"
+                  },
+                  "eventHistory": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "example": "internalId"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "MedRequest.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<MedRequest>"
+      },
+      "MedRequest.Filter1": {
+        "type": "object",
+        "title": "MedRequest.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "MedRequest.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "internalId": {
+                    "type": "boolean"
+                  },
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "instantiatesCanonical": {
+                    "type": "boolean"
+                  },
+                  "instantiatesUri": {
+                    "type": "boolean"
+                  },
+                  "basedOn": {
+                    "type": "boolean"
+                  },
+                  "priorPrescription": {
+                    "type": "boolean"
+                  },
+                  "groupIdentifier": {
+                    "type": "boolean"
+                  },
+                  "status": {
+                    "type": "boolean"
+                  },
+                  "statusReason": {
+                    "type": "boolean"
+                  },
+                  "statusChanged": {
+                    "type": "boolean"
+                  },
+                  "intent": {
+                    "type": "boolean"
+                  },
+                  "category": {
+                    "type": "boolean"
+                  },
+                  "priority": {
+                    "type": "boolean"
+                  },
+                  "doNotPerform": {
+                    "type": "boolean"
+                  },
+                  "medication": {
+                    "type": "boolean"
+                  },
+                  "subject": {
+                    "type": "boolean"
+                  },
+                  "informationSource": {
+                    "type": "boolean"
+                  },
+                  "authoredOn": {
+                    "type": "boolean"
+                  },
+                  "requester": {
+                    "type": "boolean"
+                  },
+                  "reported": {
+                    "type": "boolean"
+                  },
+                  "performerType": {
+                    "type": "boolean"
+                  },
+                  "performer": {
+                    "type": "boolean"
+                  },
+                  "recorder": {
+                    "type": "boolean"
+                  },
+                  "reason": {
+                    "type": "boolean"
+                  },
+                  "courseOfTherapyType": {
+                    "type": "boolean"
+                  },
+                  "insurance": {
+                    "type": "boolean"
+                  },
+                  "note": {
+                    "type": "boolean"
+                  },
+                  "dose": {
+                    "type": "boolean"
+                  },
+                  "dispenseRequest": {
+                    "type": "boolean"
+                  },
+                  "substitution": {
+                    "type": "boolean"
+                  },
+                  "eventHistory": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "example": "internalId"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "MedRequest.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<MedRequest>"
+      },
+      "MedUsage.Filter": {
+        "type": "object",
+        "title": "MedUsage.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "internalId": {
+                    "type": "boolean"
+                  },
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "status": {
+                    "type": "boolean"
+                  },
+                  "category": {
+                    "type": "boolean"
+                  },
+                  "medication": {
+                    "type": "boolean"
+                  },
+                  "subject": {
+                    "type": "boolean"
+                  },
+                  "encounter": {
+                    "type": "boolean"
+                  },
+                  "effective": {
+                    "type": "boolean"
+                  },
+                  "dateAsserted": {
+                    "type": "boolean"
+                  },
+                  "informationSource": {
+                    "type": "boolean"
+                  },
+                  "derivedFrom": {
+                    "type": "boolean"
+                  },
+                  "reason": {
+                    "type": "boolean"
+                  },
+                  "note": {
+                    "type": "boolean"
+                  },
+                  "renderedDosageInstruction": {
+                    "type": "boolean"
+                  },
+                  "dosage": {
+                    "type": "boolean"
+                  },
+                  "adherence": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "example": "internalId"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "MedUsage.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<MedUsage>"
+      },
+      "MedUsage.Filter1": {
+        "type": "object",
+        "title": "MedUsage.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "MedUsage.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "internalId": {
+                    "type": "boolean"
+                  },
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "status": {
+                    "type": "boolean"
+                  },
+                  "category": {
+                    "type": "boolean"
+                  },
+                  "medication": {
+                    "type": "boolean"
+                  },
+                  "subject": {
+                    "type": "boolean"
+                  },
+                  "encounter": {
+                    "type": "boolean"
+                  },
+                  "effective": {
+                    "type": "boolean"
+                  },
+                  "dateAsserted": {
+                    "type": "boolean"
+                  },
+                  "informationSource": {
+                    "type": "boolean"
+                  },
+                  "derivedFrom": {
+                    "type": "boolean"
+                  },
+                  "reason": {
+                    "type": "boolean"
+                  },
+                  "note": {
+                    "type": "boolean"
+                  },
+                  "renderedDosageInstruction": {
+                    "type": "boolean"
+                  },
+                  "dosage": {
+                    "type": "boolean"
+                  },
+                  "adherence": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "example": "internalId"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "MedUsage.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<MedUsage>"
+      },
+      "PingResponse": {
+        "type": "object",
+        "title": "PingResponse",
+        "properties": {
+          "greeting": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "headers": {
+            "type": "object",
+            "properties": {
+              "Content-Type": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": true
+          }
+        }
+      }
+    }
+  }
+}

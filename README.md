@@ -71,6 +71,8 @@ Open http://127.0.0.1:3000 in your browser, preferably Google Chrome, in private
 
 ### Step 3:  Different endpoints
 
+Some of the most useful enpoints are listed below:
+
 For every endpoint, change 'PATH' with the following:
 - med-requests
 - med-dispenses
@@ -109,6 +111,7 @@ DEL request, deletes the object with ID <id>:
 
     https://gravitate-health.lst.tfo.upm.es/med-management/PATH/<id>
 
+For further details check the [openapi](openapi.json)
 
 Known issues and limitations
 ----------------------------
