@@ -37,12 +37,12 @@ Installation
 
 #### Step 1: Clone the workspace
 ```bash
-git clone https://github.com/Gravitate-Health/ REPOSITORIO
+git clone https://github.com/Gravitate-Health/MedicationManagement.git
 ```
 #### Step 2: Install all the dependencies
 
 ```bash
-cd REPOSITORIO
+cd MedicationManagement
 ```
 
 By default, dependencies were installed when this application was generated.
@@ -121,14 +121,14 @@ In case you find a problem or you need extra help, please use the issues tab to 
 
 Also you can check the following documentation
 
-###Loopback documentation
+### Loopback documentation
 
 Please check out [LoopBack 4 documentation](https://loopback.io/doc/en/lb4/) to
 understand how you can continue to add features to this application.
 
 
 
-###FHIR Models
+### FHIR Models
 
 Please check out the FHIR Models used for the definition of Loopback Models.
 - [FHIR Medication Request Model](https://build.fhir.org/medicationrequest.html)
