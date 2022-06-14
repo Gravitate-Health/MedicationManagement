@@ -9,17 +9,26 @@ APIs generated using LoopBack 4 CLI with the  initial project layout.
 Table of contents
 -----------------
 
-* [Introduction](#introduction)
-* [Installation](#installation)
+- [Gravitate-Health G-Lens: Medication Management.](#gravitate-health-g-lens-medication-management)
+  - [Table of contents](#table-of-contents)
+  - [Introduction](#introduction)
+  - [Installation](#installation)
     - [Local installation](#local-installation)
+      - [Step 1: Clone the workspace](#step-1-clone-the-workspace)
+      - [Step 2: Install all the dependencies](#step-2-install-all-the-dependencies)
     - [Kubernetes deployment](#kubernetes-deployment)
-* [Usage](#usage)
-* [Known issues and limitations](#known-issues-and-limitations)
-* [Getting help](#getting-help)
-* [Contributing](#contributing)
-* [License](#license)
-* [Authors and history](#authors-and-history)
-* [Acknowledgments](#acknowledgments)
+  - [Usage](#usage)
+    - [Step 1: Run the application](#step-1-run-the-application)
+    - [Step 2: Access through the browser](#step-2-access-through-the-browser)
+    - [Step 3:  Different endpoints](#step-3--different-endpoints)
+  - [Known issues and limitations](#known-issues-and-limitations)
+  - [Getting help](#getting-help)
+    - [Loopback documentation](#loopback-documentation)
+    - [FHIR Models](#fhir-models)
+  - [Contributing](#contributing)
+  - [License](#license)
+  - [Authors and history](#authors-and-history)
+  - [Acknowledgments](#acknowledgments)
 
 
 Introduction
@@ -58,6 +67,86 @@ npm ci
 ```
 
 ### Kubernetes deployment
+
+For the Kubernetes deployment first of all, the module must be compiled into a docker image and uploaded into a registry accessible by the Kubernetes cluster, the MongoDB is pulled from the official [docker registry](https://hub.docker.com/_/mongo).
+
+```bash
+git clone https://github.com/Gravitate-Health/MedicationManagement.git
+cd MedicationManagement
+
+docker build . -t <docker-registry>/med-management:latest
+docker push <docker-registry>/med-management:latest
+```
+
+The name of the image is specified in the medication management module deployment file, [004_med-management-deployment.yaml](YAMLs/004_med-management-deployment.yaml). In that file you can also specify a registry secret in case the registry is behind authorization. Here is the documentation regarding [private registries](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/).
+
+Both the deployment files for the MongoDB and the medication information module contain several environment variables which can be modified. These environment variables are the ones we used, but the configuration allows for much more.
+
+- Mongo environment variables
+
+| Environment Variable     | description                                   | default                                                 |
+|--------------------------|-----------------------------------------------|---------------------------------------------------------|
+| MONGO_SIDECAR_POD_LABELS | Labels to be applied to the sidecar container | role=mongo-med-management,name=mongo-med-management |
+| KUBE_NAMESPACE           | Namespace where the Mongo is deployed         | development                                             |
+
+- Medication management module environment variables
+
+| Environment Variable | description                  | default                                |
+|----------------------|------------------------------|----------------------------------------|
+| DB_HOST              | Database host                | mongo-med-management                 |
+| DB_URL               | Full database connection URL | mongodb://mongo-med-management:27017/ |
+
+The next step is to apply the Kubernetes files in the cluster, the services will be deployed in the development namespace. In case the namespace has not been created before you can create it with the following commands, or change the name in `metadata.namespace`:
+
+First we deploy the database:
+
+```bash
+kubectl create namespace <namespace>                         # Only if namespace not created and/or the current context
+kubectl config set-context --current --namespace=<namespace> # Only if namespace not created and/or the current context
+
+kubectl apply -f YAMLs/001_mongo-service-med-management.yaml
+kubectl apply -f YAMLs/002_mongo-stateful-med-management.yaml
+```
+
+Once the database is ready the medication management module can be deployed, you can check if the database is ready by running:
+
+```bash
+kubectl get pod | grep "mongo-med-management"
+```
+```bash
+NAMESPACE            NAME                             READY   STATUS    RESTARTS        AGE
+<namespace>          mongo-med-management-2           2/2     Running   0               13d
+<namespace>          mongo-med-management-0           2/2     Running   0               13d
+<namespace>          mongo-med-management-1           2/2     Running   0               13d
+```
+
+If the status is running proceed with the medication management module deployment:
+
+```bash
+kubectl apply -f YAMLs/003_med-management-service.yaml
+kubectl apply -f YAMLs/004_med-management-deployment.yaml
+```
+
+You can check if the deployment is ready by running:
+
+```bash
+kubectl get pod | grep "med-management"
+```
+```bash
+NAMESPACE            NAME                                      READY   STATUS    RESTARTS        AGE
+<namespace>          med-management-dc88dd545-bvbnb            1/1     Running   0               13d
+```
+If the pod is ready you can access the service by other services in the same namespace by using the name of its Kubernetes service and the port (especified in [003_med-management-service.yaml](YAMLs/003_med-management-service.yaml)). You can also obtain both by running the following commands:
+
+```bash
+kubectl get svc | grep "med-management"
+```
+```bash
+NAME                                TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)             AGE
+med-management                      ClusterIP   10.152.183.78    <none>        3000/TCP            39d
+```
+
+The type of the service is _ClusterIP_ which means that the service can only be accessed from inside the cluster. Moreover, if the Kubernetes cluster has a DNS manager other services can access services in other namespaces using the following URL: ```http://<service-name>.<namespace>.svc.cluster.local```. To learn more about the types of services and its uses in Kubernetes, here is the [official documentation](https://kubernetes.io/docs/concepts/services-networking/). Alternatively if the [Gateway](https://github.com/Gravitate-Health/Gateway) has been deployed, the service will be proxied to the outside of the cluster at `https://<DNS>/med-management/`.
 
 Usage
 -----
@@ -167,6 +256,7 @@ limitations under the License.
 Authors and history
 ---------------------------
 - Óscar Ansótegui ([@oansotegui](https://github.com/oansotegui))
+- Álvaro Belmar ([@abelmarm](https://github.com/abelmarm))
 
 Acknowledgments
 ---------------
