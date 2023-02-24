@@ -1,4 +1,4 @@
-# Copyright 2022 Universidad Politécnica de Madrid
+# Copyright 2023 Universidad Politécnica de Madrid
 # 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,29 +12,27 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
 metadata:
   name: med-management
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: med-management
-  template:
-    metadata:
-      labels:
-        app: med-management
-    spec:
-      containers:
-      - name: med-management
-        image: localhost:32000/med-management:latest
-        env:
-        - name: DB_HOST
-          value: "mongo-med-management"
-        - name: DB_URL
-          value: "mongodb://mongo-med-management:27017/"
-        - name: TIME
-          value: "1"
-        ports:
-        - containerPort: 3000
+  hosts:
+  - "*"
+  gateways:
+  - gh-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /med-administrations
+    - uri:
+        prefix: /med-dispenses
+    - uri:
+        prefix: /med-requests
+    - uri:
+        prefix: /med-usages
+    route:
+    - destination:
+        host: med-management.default.svc.cluster.local
+        port:
+          number: 3000

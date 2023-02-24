@@ -12,21 +12,29 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-apiVersion: v1
-kind: Service
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: med-management
-  labels:
-    app: med-management
-  annotations:
-    prometheus.io/scrape: 'true'
-    prometheus.io/port:   '3000'
 spec:
+  replicas: 1
   selector:
-    app: med-management
-  ports:
-  - name: http
-    protocol: TCP
-    port: 3000
-    targetPort: 3000
-  type: ClusterIP
+    matchLabels:
+      app: med-management
+  template:
+    metadata:
+      labels:
+        app: med-management
+    spec:
+      containers:
+      - name: med-management
+        image: gravitate-registry.cr.de-fra.ionos.com/med-management
+        env:
+        - name: DB_HOST
+          value: "mongo-med-management"
+        - name: DB_URL
+          value: "mongodb://mongo-med-management:27017/"
+        - name: TIME
+          value: "1"
+        ports:
+        - containerPort: 3000
